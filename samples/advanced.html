@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jquery-vgrd</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://cdn.jsdelivr.net/holder/2.4.0/holder.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
+		
+		<script src="../src/jquery.vgrd.js"></script>
+		
+		<!--<link rel="stylesheet" href="bootstrap-xss.css"/>-->
+		
+		<style>
+		
+			.row {
+				margin-left: 0;
+				margin-right: 0;
+			}
+			
+			*[class^='col-'] {
+				padding: 0;
+			}
+			
+			.thumbnail {
+				margin-bottom: 0;
+				border: 0;
+			}
+		
+			.entry-summary {
+				background: yellow;
+				overflow: hidden;
+			}
+			
+			
+			.entry-summary {
+				transition: height 0.4s ease-in-out;
+			}
+			
+			.brand {
+				background: green;
+			}
+			
+			.thumbnail {
+				padding: 0;
+			}
+			
+			.teaser {
+				background: brown;
+				overflow: hidden;
+			}
+			
+			
+			img {
+				width: 100% !important;
+				height: auto !important;
+			}
+			
+			.footer {
+				height: 1000px;
+				background: violet;
+				overflow: hidden;
+			}
+			
+		</style>
+		
+		
+		<script>
+			
+			
+			$(function() {
+				$('.grid').vgrd({
+				  unitRatio: 0.04751461988304, 
+				  computeHeight: function(elem, height, containerWidth, unitRatio, value) {
+				    var $this = $(elem), $window = $(window);
+            if ($this.hasClass('entry-summary') && $this.offset().top - $window.scrollTop() < $window.height() * 0.25) {
+              return 0;
+            }
+				    return height;
+				  }
+				});
+				
+				$(window).on('scroll', function() {
+					$('.grid').vgrd();
+				});
+				
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div class="container grid">
+			<div class="page-header">
+				<h1>jquery-vgrd <small>advanced example</small></h1>
+			</div>
+			
+			<!-- grid md -->
+			<div class="hidden-xs hidden-sm">
+  			<div class="row">
+  				<div class="col-md-6 col-sm-6 col-xs-6">
+  					<div class="entry">
+  						<a class="thumbnail vg-6" href="#">
+  							<img src="holder.js/933x532"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-md-3 col-sm-3 col-xs-3">
+  					<div class="entry">
+  						<a class="thumbnail vg-3" href="#">
+  							<img src="holder.js/466x266"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  					<div class="entry">
+  						<a class="thumbnail vg-3" href="#">
+  							<img src="holder.js/466x266"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-md-3 col-sm-3 col-xs-3">
+  					<div class="entry">
+  						<a class="thumbnail vg-6" href="#">
+  							<img src="holder.js/466x532"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-9">
+  					<div class="row">
+  						<div class="col-md-4 col-sm-3 col-xs-3">
+  							<div class="entry">
+  								<a class="thumbnail vg-6" href="#">
+  									<img src="holder.js/466x532"> 
+  								</a>
+  								<div class="entry-summary vg-2">
+  									<h3>Lorem ipsum</h3>
+  								</div>
+  							</div>
+  						</div>
+  						<div class="col-md-8 col-sm-6 col-xs-6">
+  							<div class="entry">
+  								<a class="thumbnail vg-6" href="#">
+  									<img src="holder.js/933x532"> 
+  								</a>
+  								<div class="entry-summary vg-2">
+  									<h3>Lorem ipsum</h3>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  					<div class="row">
+  						<div class="col-md-8 col-sm-3 col-xs-3">
+  							<div class="entry">
+  								<a class="thumbnail vg-6" href="#">
+  									<img src="holder.js/933x532"> 
+  								</a>
+  								<div class="entry-summary vg-2">
+  									<h3>Lorem ipsum</h3>
+  								</div>
+  							</div>
+  						</div>
+  						<div class="col-md-4 col-sm-6 col-xs-6">
+  							<div class="entry">
+  								<a class="thumbnail vg-6" href="#">
+  									<img src="holder.js/466x532"> 
+  								</a>
+  								<div class="entry-summary vg-2">
+  									<h3>Lorem ipsum</h3>
+  								</div>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-md-3 col-sm-3 col-xs-3">
+  					<div class="teaser vg-12">
+  						<div>
+  							<h3>Lorem ipsum</h3>
+  							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+  						</div>
+  					</div>
+  					<div class="entry-summary vg-2">
+  						<h3>Lorem ipsum</h3>
+  					</div>
+  				</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-3">
+  					<div class="entry">
+  						<a class="thumbnail vg-6" href="#">
+  							<img src="holder.js/466x532"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-md-3 col-sm-3 col-xs-3">
+  					<div class="entry">
+  						<a class="thumbnail vg-3" href="#">
+  							<img src="holder.js/466x266"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  					<div class="entry">
+  						<a class="thumbnail vg-3" href="#">
+  							<img src="holder.js/466x266"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-md-6 col-sm-6 col-xs-6">
+  					<div class="entry">
+  						<a class="thumbnail vg-6" href="#">
+  							<img src="holder.js/933x532"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  			
+  			<div class="row">
+  				<div class="col-md-6 col-sm-6 col-xs-6">
+  					<div class="entry">
+  						<a class="thumbnail vg-6" href="#">
+  							<img src="holder.js/933x532"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  				<div class="col-md-6 col-sm-6 col-xs-6">
+  					<div class="entry">
+  						<a class="thumbnail vg-6" href="#">
+  							<img src="holder.js/933x532"> 
+  						</a>
+  						<div class="entry-summary vg-2">
+  							<h3>Lorem ipsum</h3>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  			
+  		</div>
+  		
+  		<!-- grid sm -->
+  		<div class="hidden-xxs hidden-xs visible-sm">
+        
+        <div class="row">
+          
+          <div class="col-md-6 col-sm-8 col-xs-8">
+            <div class="entry">
+              <a class="thumbnail vg-8" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-4 col-xs-4">
+            <div class="entry">
+              <a class="thumbnail vg-4" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+            <div class="entry">
+              <a class="thumbnail vg-4" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          
+          <div class="col-sm-8">
+            
+            <div class="row">
+              
+              <div class="col-sm-6">
+                
+                <div class="entry">
+                  <a class="thumbnail vg-8" href="#">
+                    <img src="holder.js/466x532"> 
+                  </a>
+                  <div class="entry-summary vg-2">
+                    <h3>Lorem ipsum</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="entry">
+                  <a class="thumbnail vg-8" href="#">
+                    <img src="holder.js/466x532"> 
+                  </a>
+                  <div class="entry-summary vg-2">
+                    <h3>Lorem ipsum</h3>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="entry">
+                  <a class="thumbnail vg-8" href="#">
+                    <img src="holder.js/933x532"> 
+                  </a>
+                  <div class="entry-summary vg-2">
+                    <h3>Lorem ipsum</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <div class="col-md-3 col-sm-4 col-xs-3">
+            <div class="teaser vg-16">
+              <div>
+                <h3>Lorem ipsum</h3>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+              </div>
+            </div>
+            <div class="entry-summary vg-2">
+              <h3>Lorem ipsum</h3>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-sm-4">
+            <div class="entry">
+              <a class="thumbnail vg-8" href="#">
+                <img src="holder.js/466x532"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="entry">
+              <a class="thumbnail vg-8" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6 col-sm-8 col-xs-8">
+            <div class="entry">
+              <a class="thumbnail vg-8" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-3 col-sm-4 col-xs-4">
+            <div class="entry">
+              <a class="thumbnail vg-4" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+            <div class="entry">
+              <a class="thumbnail vg-4" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-2">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      
+      <!-- grid xs -->
+      <div class="hidden-md hidden-sm visible-xs">
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-xs-6">
+            <div class="entry">
+              <a class="thumbnail vg-6" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+            <div class="entry">
+              <a class="thumbnail vg-6" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-6">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/466x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/466x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/466x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-6">
+            <div class="teaser vg-24">
+              <div>
+                <h3>Lorem ipsum</h3>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+              </div>
+            </div>
+            <div class="entry-summary vg-3">
+              <h3>Lorem ipsum</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-xs-6">
+            <div class="entry">
+              <a class="thumbnail vg-6" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+            <div class="entry">
+              <a class="thumbnail vg-6" href="#">
+                <img src="holder.js/466x266"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-6">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/466x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="entry">
+              <a class="thumbnail vg-12" href="#">
+                <img src="holder.js/933x532"> 
+              </a>
+              <div class="entry-summary vg-3">
+                <h3>Lorem ipsum</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+			<div class="footer">
+				<h4>This is the magic footer</h4>
+			</div>
+		</div>
+		
+		
+		
+	</body>
+</html>
