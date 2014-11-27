@@ -3,37 +3,12 @@
   var pluginName = "vgrd";
   var defaults = {
     cssPrefix: 'vg-', 
-    unitRatio: '0.09', 
+    unitRatio: '0.1', 
     bindResize: true, 
     helperPrefix: 'visible-', 
     computeHeight: null, 
     breakpoints: ['xs', 'sm', 'md', 'lg']
   };
-  
-  function computedOptions(elem, options) {
-    return $.extend({}, options, {
-      // override
-      breakpoints: (function(breakpoints) {
-        if (typeof breakpoints == 'object') {
-          return breakpoints;
-        }
-        if (typeof breakpoints == 'string') {
-          if (breakpoints == 'none') {
-            return {};
-          }  
-        }
-        
-        // compute breakpoints
-        var computedBreakpoints = {};
-        for (var key in breakpoints) {
-          if (typeof breakpoints[key] == 'function') {
-            computedBreakpoints = breakpoints[key].call(elem, options);
-          }
-        }
-         
-      })(options.breakpoints)
-    });
-  }
   
   function Vgrd(elem, options) {
     
@@ -50,14 +25,14 @@
       
       // merge options
       _opts = $.extend({}, defaults, _opts, options);
-      var opts = computedOptions(elem, _opts);
+      var opts = _opts;
       
       // resize
       var vgElems = $elem.find("*[class*='" + opts.cssPrefix + "']");
       
-      var u = opts.unitRatio;
-      var w = $elem.width();
-      var vh = w * u;
+      var unitRatio = opts.unitRatio;
+      var containerWidth = $elem.width();
+      var vh = containerWidth * unitRatio;
       var breakpoints = opts.breakpoints, helper, breakpoint, i, helpers = {}, activeBreakpoint;
       for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
         var helperClass = opts.helperPrefix + breakpoint;
@@ -73,45 +48,45 @@
       }
       
       vgElems.each(function() {
-        var value = null;
         var string = this.className;
         var pattern = "" + opts.cssPrefix + "(?:(" + breakpoints.join("|") + ")-)?(\\d+)";
         var regex = new RegExp(pattern);
         var match = null;
         var helper, breakpoint;
         var values = {};
+        var patternValue = null;
         while (match = regex.exec(string, "g")) {
-          value = parseFloat(match[2]);
+          patternValue = parseFloat(match[2]);
           breakpoint = match[1];
           if (breakpoint) {
-            values[breakpoint] = value;
+            values[breakpoint] = patternValue;
           } else {
-            values["_"] = value;
+            values["_"] = patternValue;
           }
           string = string.substring(match.index + match[0].length);
         }
-        value = values["_"] || null;
+        patternValue = values["_"] || null;
         delete values["_"];
         var matchBreakpoint = null;
         for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
           if (typeof values[breakpoint] != "undefined") {
-            value = values[breakpoint];
+            patternValue = values[breakpoint];
             matchBreakpoint = breakpoint;
           }
           if (breakpoint === activeBreakpoint) {
             break;
           }
         }
-        if (typeof value == 'number') {
-          var height = value * vh;
+        if (typeof patternValue == 'number') {
+          var computedHeight = patternValue * vh;
           if (typeof opts.computeHeight == 'function') {
-            var computedHeight = opts.computeHeight.call($elem, this, height, w, u, value);
+            var computedHeight = opts.computeHeight.call($elem, this, computedHeight, containerWidth, unitRatio, patternValue);
             if (typeof computedHeight == 'number') {
               height = computedHeight;
             }
           }
           // apply calculated height
-          $(this).height(height);
+          $(this).height(computedHeight);
         }
       });
     };
