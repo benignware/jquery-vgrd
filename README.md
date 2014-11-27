@@ -71,7 +71,7 @@ Options
     <td>bindResize</td>
     <td>Boolean</td>
     <td>
-      Controls if layout is triggered automatically no window resize. Call `$('.vgrd').vgrd()` to resize manually. Default: `true` 
+      Specify whether to trigger layout automatically on window resize. Call `$('.vgrd').vgrd()` to resize manually. Default: `true` 
     </td>
   </tr>
   <tr>
