@@ -1,0 +1,42 @@
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+*[class^='col-'] {
+  padding: 0;
+}
+
+.thumbnail {
+  margin-bottom: 0;
+  border: 0;
+}
+
+.entry-summary {
+  background: yellow;
+  overflow: hidden;
+}
+
+.brand {
+  background: green;
+}
+
+.thumbnail {
+  padding: 0;
+}
+
+.teaser {
+  background: brown;
+  overflow: hidden;
+}
+
+img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.footer {
+  height: 1000px;
+  background: violet;
+  overflow: hidden;
+}

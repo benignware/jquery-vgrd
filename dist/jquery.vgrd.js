@@ -5,14 +5,42 @@
     cssPrefix: 'vg-', 
     unitRatio: '0.09', 
     bindResize: true, 
-    computeHeight: null
+    helperPrefix: 'visible-', 
+    computeHeight: null, 
+    breakpoints: ['xs', 'sm', 'md', 'lg']
   };
+  
+  function computedOptions(elem, options) {
+    return $.extend({}, options, {
+      // override
+      breakpoints: (function(breakpoints) {
+        if (typeof breakpoints == 'object') {
+          return breakpoints;
+        }
+        if (typeof breakpoints == 'string') {
+          if (breakpoints == 'none') {
+            return {};
+          }  
+        }
+        
+        // compute breakpoints
+        var computedBreakpoints = {};
+        for (var key in breakpoints) {
+          if (typeof breakpoints[key] == 'function') {
+            computedBreakpoints = breakpoints[key].call(elem, options);
+          }
+        }
+         
+      })(options.breakpoints)
+    });
+  }
   
   function Vgrd(elem, options) {
     
-    var instance = this, $elem = $(elem);
-    this.elem = elem;
-    var opts = this.options = $.extend({}, defaults, options);
+    var 
+      instance = this, 
+      $elem = $(elem),
+      _opts = $.extend({}, defaults, options);
     
     function resizeHandler(e) {
       instance.resize();
@@ -21,7 +49,8 @@
     this.resize = function(options) {
       
       // merge options
-      var opts = this.options = $.extend({}, defaults, this.options, options);
+      _opts = $.extend({}, defaults, _opts, options);
+      var opts = computedOptions(elem, _opts);
       
       // resize
       var vgElems = $elem.find("*[class*='" + opts.cssPrefix + "']");
@@ -29,13 +58,49 @@
       var u = opts.unitRatio;
       var w = $elem.width();
       var vh = w * u;
+      var breakpoints = opts.breakpoints, helper, breakpoint, i, helpers = {}, activeBreakpoint;
+      for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
+        var helperClass = opts.helperPrefix + breakpoint;
+        helper = $("body > *[class='" + helperClass + "']").first();
+        if (!helper.length) {
+          helper = $('<div class="' + helperClass + '"></div>"');
+          $('body').append(helper);
+        }
+        helpers[breakpoint] = helper;
+        if (helper.is(":visible")) {
+          activeBreakpoint = breakpoint;
+        }
+      }
       
       vgElems.each(function() {
         var value = null;
-        var regex = new RegExp("" + opts.cssPrefix + "(\\d+)");
-        var match = regex.exec(this.className);
-        if (match) {
-          value = parseFloat(match[1]);
+        var string = this.className;
+        var pattern = "" + opts.cssPrefix + "(?:(" + breakpoints.join("|") + ")-)?(\\d+)";
+        var regex = new RegExp(pattern);
+        var match = null;
+        var helper, breakpoint;
+        var values = {};
+        while (match = regex.exec(string, "g")) {
+          value = parseFloat(match[2]);
+          breakpoint = match[1];
+          if (breakpoint) {
+            values[breakpoint] = value;
+          } else {
+            values["_"] = value;
+          }
+          string = string.substring(match.index + match[0].length);
+        }
+        value = values["_"] || null;
+        delete values["_"];
+        var matchBreakpoint = null;
+        for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
+          if (typeof values[breakpoint] != "undefined") {
+            value = values[breakpoint];
+            matchBreakpoint = breakpoint;
+          }
+          if (breakpoint === activeBreakpoint) {
+            break;
+          }
         }
         if (typeof value == 'number') {
           var height = value * vh;
@@ -53,7 +118,7 @@
     
     // resize handler
 	  $(window).off('resize', resizeHandler);
-	  if (opts.bindResize) {
+	  if (_opts.bindResize) {
 	    $(window).on('resize', resizeHandler);
 	  }
 	  
@@ -61,6 +126,7 @@
 	  this.resize(options);
     
   };
+  
   
   var pluginClass = Vgrd;
   jQuery.fn[pluginName] = function(options) {

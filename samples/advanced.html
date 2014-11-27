@@ -9,65 +9,15 @@
 		
 		<script src="../src/jquery.vgrd.js"></script>
 		
-		<!--<link rel="stylesheet" href="bootstrap-xss.css"/>-->
+		<link rel="stylesheet" href="styles.css"/>
 		
 		<style>
-		
-			.row {
-				margin-left: 0;
-				margin-right: 0;
-			}
-			
-			*[class^='col-'] {
-				padding: 0;
-			}
-			
-			.thumbnail {
-				margin-bottom: 0;
-				border: 0;
-			}
-		
-			.entry-summary {
-				background: yellow;
-				overflow: hidden;
-			}
-			
-			
 			.entry-summary {
 				transition: height 0.4s ease-in-out;
 			}
-			
-			.brand {
-				background: green;
-			}
-			
-			.thumbnail {
-				padding: 0;
-			}
-			
-			.teaser {
-				background: brown;
-				overflow: hidden;
-			}
-			
-			
-			img {
-				width: 100% !important;
-				height: auto !important;
-			}
-			
-			.footer {
-				height: 1000px;
-				background: violet;
-				overflow: hidden;
-			}
-			
 		</style>
 		
-		
 		<script>
-			
-			
 			$(function() {
 				$('.grid').vgrd({
 				  unitRatio: 0.04751461988304, 
@@ -83,9 +33,7 @@
 				$(window).on('scroll', function() {
 					$('.grid').vgrd();
 				});
-				
 			});
-			
 		</script>
 	</head>
 	<body>

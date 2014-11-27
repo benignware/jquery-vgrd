@@ -9,50 +9,11 @@
 		
 		<script src="../src/jquery.vgrd.js"></script>
 		
+		<link rel="stylesheet" href="styles.css">
+		
 		<style>
 		
-			.row {
-				margin-left: 0;
-				margin-right: 0;
-			}
 			
-			*[class^='col-'] {
-				padding: 0;
-			}
-			
-			.thumbnail {
-				margin-bottom: 0;
-				border: 0;
-			}
-		
-			.entry-summary {
-				background: yellow;
-				overflow: hidden;
-			}
-			
-			.brand {
-				background: green;
-			}
-			
-			.thumbnail {
-				padding: 0;
-			}
-			
-			.teaser {
-				background: brown;
-				overflow: hidden;
-			}
-			
-			img {
-				width: 100% !important;
-				height: auto !important;
-			}
-			
-			.footer {
-				height: 1000px;
-				background: violet;
-				overflow: hidden;
-			}
 			
 		</style>
 		
@@ -70,50 +31,51 @@
 	<body>
 		<div class="container grid">
 			<div class="page-header">
-				<h1>jquery-vgrd <small>basic example</small></h1>
+				<h1>jquery-vgrd <small>example</small></h1>
 			</div>
 			
 			<div class="row">
-			  <div class="col-md-3 col-sm-3 col-xs-3">
+			  <div class="col-md-3 col-sm-4">
           <div class="entry">
-            <a class="thumbnail vg-3" href="#">
+            <a class="thumbnail vg-md-3 vg-sm-4 vg-xs-12" href="#">
               <img src="holder.js/466x266"> 
             </a>
-            <div class="entry-summary vg-3">
+            <div class="entry-summary vg-md-3 vg-sm-4 vg-xs-4">
               <h3>Lorem ipsum</h3>
             </div>
           </div>
           <div class="entry">
-            <a class="thumbnail vg-3" href="#">
+            <a class="thumbnail vg-md-3 vg-sm-4 vg-xs-12" href="#">
               <img src="holder.js/466x266"> 
             </a>
           </div>
         </div>
-			  <div class="col-md-6 col-sm-6 col-xs-6">
+			  <div class="col-md-6 col-sm-4">
 			    <div class="entry">
-            <a class="thumbnail vg-6" href="#">
+            <a class="thumbnail vg-md-6 vg-sm-4 vg-xs-12" href="#">
               <img src="holder.js/933x532"> 
             </a>
-            <div class="entry-summary vg-3">
+            <div class="entry-summary vg-md-3 vg-sm-8 vg-xs-4">
               <h3>Lorem ipsum</h3>
             </div>
           </div>
 			  </div>
-        <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="col-md-3 col-sm-4">
           <div class="entry">
-            <div class="entry-summary vg-3">
-              <h3>Lorem ipsum</h3>
-            </div>
-            <a class="thumbnail vg-6" href="#">
+            <a class="thumbnail vg-md-6 vg-sm-8 vg-xs-24" href="#">
               <img src="holder.js/466x532"> 
             </a>
+            <div class="entry-summary vg-md-3 vg-sm-4 vg-xs-4">
+              <h3>Lorem ipsum</h3>
+            </div>
           </div>
         </div>
 			</div>
 			
 		</div>
 		
-		
+		<div class="visible-sm"> </div>
+		<div class="visible-lg"> </div>
 		
 	</body>
 </html>
