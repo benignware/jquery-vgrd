@@ -11,6 +11,7 @@ Initialize the plugin
 ```js
 $(function() {
   $('.vgrd').vgrd({
+    // aspect to container width
     unitRatio: 0.04751461988304
   });
 })
