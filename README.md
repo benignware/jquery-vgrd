@@ -65,26 +65,20 @@ Options
 
 <table>
   <tr>
-    <th>Option</th><th>Type</th><th>Description</th><th>Default</th>
+    <th>Option</th><th>Type</th><th>Description</th>
   </tr>
   <tr>
     <td>bindResize</td>
     <td>Boolean</td>
     <td>
-      Controls if layout is triggered automatically no window resize. Call `$('.vgrd').vgrd()` to resize manually. 
-    </td>
-    <td>
-      true
+      Controls if layout is triggered automatically no window resize. Call `$('.vgrd').vgrd()` to resize manually. Default: `true` 
     </td>
   </tr>
   <tr>
     <td>breakpoints</td>
     <td>Array</td>
     <td>
-      Specifies breakpoint detection keys.
-    </td>
-    <td>
-      ['xs','sm','md','lg']
+      Specifies breakpoint detection keys. Default: `['xs','sm','md','lg']`
     </td>
   </tr>
   <tr>
@@ -93,38 +87,26 @@ Options
     <td>
       Hook into the calculation routine by returning a height. Arguments provided are: currently processed `element`, precalculated `height`, `containerWidth`, value of `unitRatio`-option and least the `value` of the currently processed vg-pattern.
     </td>
-    <td>
-      null
-    </td>
   </tr>
   <tr>
     <td>cssPrefix</td>
     <td>String</td>
     <td>
-      Specifies the prefix for vertical selector.
-    </td>
-    <td>
-      vg-
+      Specifies the prefix for vertical selector.Default: `vg-`
     </td>
   </tr>
   <tr>
     <td>helperPrefix</td>
     <td>String</td>
     <td>
-      Specifies the prefix for the breakpoint-helper selector prefix.
-    </td>
-    <td>
-      visible-
+      Specifies the prefix for the breakpoint-helper selector prefix. Default: `visible-`
     </td>
   </tr>
   <tr>
     <td>unitRatio</td>
     <td>Float</td>
     <td>
-      Provides the measurement unit for vertical grid selector as proportion of container width. 
-    </td>
-    <td>
-      0.1
+      Provides the measurement unit for vertical grid selector as proportion of container width. Default: `0.1`
     </td>
   </tr>
 </table>
