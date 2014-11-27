@@ -85,7 +85,7 @@ Options
     <td>computeHeight</td>
     <td>Function</td>
     <td>
-      Hook into the calculation routine by returning a height. Arguments provided are: currently processed `element`, precalculated `height`, `containerWidth`, value of `unitRatio`-option and least the `value` of the currently processed vg-pattern.
+      Hook into the calculation routine by returning a height. Arguments provided are: currently processed `element`, precalculated `height`, `containerWidth`, value of `unitRatio`-option and the `value` of the currently processed vg-pattern.
     </td>
   </tr>
   <tr>
