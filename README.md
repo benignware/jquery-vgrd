@@ -92,7 +92,7 @@ Options
     <td>cssPrefix</td>
     <td>String</td>
     <td>
-      Specifies the prefix for vertical selector.Default: `vg-`
+      Specifies the prefix for vertical selector. Default: `vg-`
     </td>
   </tr>
   <tr>
