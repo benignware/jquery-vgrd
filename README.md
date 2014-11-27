@@ -84,7 +84,7 @@ Options
       Specifies breakpoint detection keys.
     </td>
     <td>
-      ['xs', 'sm', 'md', 'lg']
+      ['xs','sm','md','lg']
     </td>
   </tr>
   <tr>
