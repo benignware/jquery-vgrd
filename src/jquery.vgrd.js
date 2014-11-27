@@ -3,7 +3,7 @@
   var pluginName = "vgrd";
   var defaults = {
     cssPrefix: 'vg-', 
-    unitRatio: '0.09', 
+    unitRatio: '0.1', 
     bindResize: true, 
     helperPrefix: 'visible-', 
     computeHeight: null, 
