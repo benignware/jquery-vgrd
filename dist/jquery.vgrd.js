@@ -21,19 +21,11 @@
       instance.resize();
     }
     
-    this.resize = function(options) {
-      
-      // merge options
-      _opts = $.extend({}, defaults, _opts, options);
-      var opts = _opts;
-      
-      // resize
-      var vgElems = $elem.find("*[class*='" + opts.cssPrefix + "']");
-      
-      var unitRatio = opts.unitRatio;
-      var containerWidth = $elem.width();
-      var vh = containerWidth * unitRatio;
-      var breakpoints = opts.breakpoints, helper, breakpoint, i, helpers = {}, activeBreakpoint;
+    /**
+     * Checks if the specified breakpoint is currently active
+     */
+    this.activeBreakpoint = function(breakpoint) {
+      var opts = _opts, breakpoints = opts.breakpoints, helper, breakpoint, i, helpers = {}, activeBreakpoint;
       for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
         var helperClass = opts.helperPrefix + breakpoint;
         helper = $("body > *[class='" + helperClass + "']").first();
@@ -46,8 +38,24 @@
           activeBreakpoint = breakpoint;
         }
       }
+      return activeBreakpoint;
+    };
+    
+    this.resize = function(options) {
+      
+      // merge options
+      _opts = $.extend({}, defaults, _opts, options);
+      var opts = _opts;
+      
+      // resize
+      var vgElems = $elem.find("*[class*='" + opts.cssPrefix + "']");
+      
+      var unitRatio = opts.unitRatio;
+      var containerWidth = $elem.width();
+      var vh = containerWidth * unitRatio;
       
       vgElems.each(function() {
+        var breakpoints = _opts.breakpoints;
         var string = this.className;
         var pattern = "" + opts.cssPrefix + "(?:(" + breakpoints.join("|") + ")-)?(\\d+)";
         var regex = new RegExp(pattern);
@@ -68,6 +76,7 @@
         patternValue = values["_"] || null;
         delete values["_"];
         var matchBreakpoint = null;
+        var activeBreakpoint = instance.activeBreakpoint();
         for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
           if (typeof values[breakpoint] != "undefined") {
             patternValue = values[breakpoint];
