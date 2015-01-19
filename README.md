@@ -89,6 +89,13 @@ Options
     </td>
   </tr>
   <tr>
+    <td>container</td>
+    <td>String</td>
+    <td>
+      Provide parent container class. Defaults to `.row`.
+    </td>
+  </tr>
+  <tr>
     <td>cssPrefix</td>
     <td>String</td>
     <td>
