@@ -2,8 +2,9 @@
   
   var pluginName = "vgrd";
   var defaults = {
+    container: '.row',
     cssPrefix: 'vg-', 
-    unitRatio: '0.1', 
+    unitRatio: 0.08333333333333, 
     bindResize: true, 
     helperPrefix: 'visible-', 
     computeHeight: null, 
@@ -21,11 +22,17 @@
       instance.resize();
     }
     
-    /**
-     * Checks if the specified breakpoint is currently active
-     */
-    this.activeBreakpoint = function(breakpoint) {
-      var opts = _opts, breakpoints = opts.breakpoints, helper, breakpoint, i, helpers = {}, activeBreakpoint;
+    this.resize = function(options) {
+      
+      // merge options
+      _opts = $.extend({}, defaults, _opts, options);
+      var opts = _opts;
+      
+      // resize
+      var vgElems = $elem.find("*[class*='" + opts.cssPrefix + "']");
+      
+      
+      var breakpoints = opts.breakpoints, helper, breakpoint, i, helpers = {}, activeBreakpoint;
       for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
         var helperClass = opts.helperPrefix + breakpoint;
         helper = $("body > *[class='" + helperClass + "']").first();
@@ -38,24 +45,19 @@
           activeBreakpoint = breakpoint;
         }
       }
-      return activeBreakpoint;
-    };
-    
-    this.resize = function(options) {
-      
-      // merge options
-      _opts = $.extend({}, defaults, _opts, options);
-      var opts = _opts;
-      
-      // resize
-      var vgElems = $elem.find("*[class*='" + opts.cssPrefix + "']");
       
       var unitRatio = opts.unitRatio;
-      var containerWidth = $elem.width();
-      var vh = containerWidth * unitRatio;
       
       vgElems.each(function() {
-        var breakpoints = _opts.breakpoints;
+        var container = opts.container ? $(this).parents(opts.container)[0] : $elem;
+        if (!$elem.has(container) && !$elem.is(container)) {
+          // Element is outside of hierarchy
+          console.log("elem is outside of hierarchy");
+          return;
+        }
+        var $container = $(container);
+        var containerWidth = $container.outerWidth(true) - ($container.outerWidth(true) - $container.width());
+        var vh = containerWidth * unitRatio;
         var string = this.className;
         var pattern = "" + opts.cssPrefix + "(?:(" + breakpoints.join("|") + ")-)?(\\d+)";
         var regex = new RegExp(pattern);
@@ -76,7 +78,6 @@
         patternValue = values["_"] || null;
         delete values["_"];
         var matchBreakpoint = null;
-        var activeBreakpoint = instance.activeBreakpoint();
         for (i = 0, breakpoint; breakpoint = breakpoints[i]; i++) {
           if (typeof values[breakpoint] != "undefined") {
             patternValue = values[breakpoint];
@@ -95,19 +96,23 @@
             }
           }
           // apply calculated height
-          $(this).height(computedHeight);
+          $(this).outerHeight(computedHeight);
+        } else {
+          $(this).css({
+            height: ""
+          });
         }
       });
     };
     
     // resize handler
-	  $(window).off('resize', resizeHandler);
-	  if (_opts.bindResize) {
-	    $(window).on('resize', resizeHandler);
-	  }
-	  
-	  // initial resize
-	  this.resize(options);
+    $(window).off('resize', resizeHandler);
+    if (_opts.bindResize) {
+      $(window).on('resize', resizeHandler);
+    }
+    
+    // initial resize
+    this.resize(options);
     
   };
   
