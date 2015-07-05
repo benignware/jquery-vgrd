@@ -1,64 +1,67 @@
 jquery-vgrd
 ===========
 
-> Enhance horizontal fluid grids with a vertical pattern
+> Enhance horizontal grids with a vertical pattern.
 
 
-Basic Usage
------------
+## Usage
 
-Initialize the plugin
-```js
-$(function() {
-  $('.vgrd').vgrd({
-    // aspect-ratio container-width
-    unitRatio: 0.04751461988304
-  });
-})
+Include dependencies.
+
+```html
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="jquery.vgrd.min.js"></script>
 ```
 
-Example markup using bootstrap
+Setup a grid with Bootstrap:
+
 ```html
-<div class="container vgrd">
-  <div class="row">
-    <div class="col-md-3 col-sm-4">
-      <div class="entry">
-        <a class="thumbnail vg-md-3 vg-sm-4 vg-xs-12" href="#">
-          <img src="holder.js/466x266"> 
-        </a>
-        <div class="entry-summary vg-md-3 vg-sm-4 vg-xs-4">
-          <h3>Lorem ipsum</h3>
-        </div>
-      </div>
-      <div class="entry">
-        <a class="thumbnail vg-md-3 vg-sm-4 vg-xs-12" href="#">
-          <img src="holder.js/466x266"> 
-        </a>
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-4">
-      <div class="entry">
-        <a class="thumbnail vg-md-6 vg-sm-4 vg-xs-12" href="#">
-          <img src="holder.js/933x532"> 
-        </a>
-        <div class="entry-summary vg-md-3 vg-sm-8 vg-xs-4">
-          <h3>Lorem ipsum</h3>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-4">
-      <div class="entry">
-        <a class="thumbnail vg-md-6 vg-sm-8 vg-xs-24" href="#">
-          <img src="holder.js/466x532"> 
-        </a>
-        <div class="entry-summary vg-md-3 vg-sm-4 vg-xs-4">
-          <h3>Lorem ipsum</h3>
-        </div>
-      </div>
-    </div>
+<div class="row vgrd">
+  <div class="col-md-3 col-sm-4">
+    <div class="vg-md-3 vg-sm-4"><div class="box">Lorem ipsum</div></div>
+    <div class="vg-md-6 vg-sm-8"><div class="box">Lorem ipsum</div></div>
+  </div>
+  <div class="col-md-6 col-sm-4">
+    <div class="vg-md-6 vg-sm-8"><div class="box">Lorem ipsum</div></div>
+    <div class="vg-md-3 vg-sm-4"><div class="box">Lorem ipsum</div></div>
+  </div>
+  <div class="col-md-3 col-sm-4">
+    <div class="vg-md-3 vg-sm-4"><div class="box">Lorem ipsum</div></div>
+    <div class="vg-md-6 vg-sm-8"><div class="box">Lorem ipsum</div></div>
   </div>
 </div>
 ```
+
+```css
+.row.vgrd {
+  margin-top: -15px;
+  margin-bottom: -15px;
+}
+
+.row *[class*='vg-'] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.box {
+  height: 100%;
+  padding: 15px;
+  background: lightblue;
+}
+```
+
+Initialize the plugin
+
+```js
+$('.vgrd').vgrd({
+  // aspect-ratio container-width
+  unitRatio: 0.04751461988304
+});
+```
+
+
 
 Options
 -------
