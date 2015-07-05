@@ -1,9 +1,24 @@
 {
   "name": "jquery-vgrd",
-  "version": "0.1.2",
+  "version": "0.0.1",
+  "description": "Enhance horizontal grids with a vertical pattern",
+  "author": {
+    "name": "Benignware",
+    "email": "mail@benignware.com",
+    "url": "https://github.com/benignware"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benignware/jquery-vgrd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benignware/jquery-findus/issues"
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-copy": "",
-    "grunt-contrib-uglify": "" 
+    "grunt-contrib-uglify": "",
+    "grunt-gh-pages": "^0.10.0",
+    "grunt-livemd": "0.0.1"
   }
 }
