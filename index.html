@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--<link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
-    <link type="text/css" rel="stylesheet" href="//cdn.rawgit.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css">
-    <link type="text/css" rel="stylesheet" href="//cdn.rawgit.com/richleland/pygments-css/master/github.css">
-    <!--
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//cdn.rawgit.com/benignware-labs/jquery-hnav/master/dist/jquery.hnav.min.js"></script>-->
+    <link type="text/css" rel="stylesheet" href="http://cdn.rawgit.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="http://cdn.rawgit.com/richleland/pygments-css/master/github.css">
     <title>jquery-vgrd</title>
     <style>
+    
+      body {
+        font-family: Helvetica, Arial, sans-serif;
+      }
+          
       .highlight-example:after {
         color: #959595;
         content: "Example";
@@ -43,36 +43,77 @@
       }
       
       .highlight-example + .highlight {
-          border-bottom-left-radius: 4px;
-          border-bottom-right-radius: 4px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
-          border-width: 1px;
-          margin: -16px 0 15px;
-          border-width: 1px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-width: 1px;
+        margin: -16px 0 15px;
+        border-width: 1px;
       }
 
       .highlight {
-          background-color: #f7f7f9;
-          border: 1px solid #e1e1e8;
-          border-radius: 4px;
-          margin-bottom: 14px;
-          padding: 0;
+        background-color: #f7f7f9;
+        border: 1px solid #e1e1e8;
+        border-radius: 4px;
+        margin-bottom: 14px;
+        padding: 0;
       }
 
       .highlight pre {
-          background-color: transparent;
-          border: 0 none;
-          margin-bottom: 0;
-          margin-top: 0;
-          padding: 0;
+        background-color: transparent;
+        border: 0 none;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 0;
       }
       
       article.markdown-body {
         max-width: 728px;
         margin: 50px auto;
       }
-
+      
+      body > footer {
+        border-top: 1px solid #eee;
+        color: #767676;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-top: 40px;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        position: relative;
+        max-width: 728px;
+        margin: 50px auto;
+      }
+      
+      body > footer > * {
+        float: left;
+        line-height: 16px;
+        font-size: 12px;
+      }
+      body > footer > *:last-child {
+        float: right;
+      }
+      
+      body > footer > nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      body > footer > nav ul li {
+        display: inline-block;
+      }
+      
+      body > footer > nav ul li + li {
+        margin-left: 10px;
+      }
+      
+      a {
+        color: #4078c0;
+        text-decoration: none;
+      }
+      
     </style>
   </head>
   <body>
@@ -85,18 +126,17 @@
 </blockquote>
 <h2 id="usage">Usage</h2>
 <p>Include dependencies.</p>
-<div><script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<div><script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
 <script src="jquery.vgrd.min.js"></script>
 </div>
 
 
 
-
-<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//code.jquery.com/jquery-1.11.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;jquery.vgrd.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </pre></div>
 <p>Setup a grid with Bootstrap:</p>
@@ -118,7 +158,6 @@
 </div>
 
 
-
 <div class="highlight"><pre><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;row vgrd&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;col-md-3 col-sm-4&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;vg-md-3 vg-sm-4&quot;</span><span class="nt">&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;box&quot;</span><span class="nt">&gt;</span>Lorem ipsum<span class="nt">&lt;/div&gt;&lt;/div&gt;</span>
@@ -134,8 +173,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 </pre></div>
-<style>
-.row.vgrd {
+<style>.row.vgrd {
   margin-top: -15px;
   margin-bottom: -15px;
 }
@@ -171,8 +209,7 @@
 <span class="p">}</span>
 </pre></div>
 <p>Initialize the plugin</p>
-<script>
-$('.vgrd').vgrd({
+<script>$('.vgrd').vgrd({
   // aspect-ratio container-width
   unitRatio: 0.04751461988304
 });
@@ -240,5 +277,33 @@ $('.vgrd').vgrd({
     </td>
   </tr>
 </table></article>
+    <footer>
+      <div class="disclaimer">
+        
+           &copy; 2015
+          
+            <a href="https://github.com/benignware">
+          
+            Benignware
+          
+            </a>
+          
+        
+      </div>
+      <nav>
+        <ul>
+          
+            <li>v0.0.1</li>
+          
+          
+            <li><a href="https://github.com/benignware/jquery-vgrd/archive/v0.0.1.zip">Download</a></li>
+          
+          
+            <li><a href="https://github.com/benignware/jquery-findus/issues">Bugs</a></li>
+          
+        </ul>
+      </nav>
+      
+    </footer>
   </body>
 </html>
