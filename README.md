@@ -3,6 +3,7 @@ jquery-vgrd
 
 > Enhance horizontal grids with a vertical pattern.
 
+[Demo](http://benignware.github.io/jquery-vgrd)
 
 ## Usage
 
